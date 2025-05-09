@@ -1,0 +1,7 @@
+<div class="modal" *ngIf="isOpen">
+  <div class="modal__overlay" (click)="closeModal()"></div>
+  <div class="modal__content">
+    <button class="modal__close" (click)="closeModal()">×</button>
+    <ng-content>sbbsbsb</ng-content>
+  </div>
+</div>

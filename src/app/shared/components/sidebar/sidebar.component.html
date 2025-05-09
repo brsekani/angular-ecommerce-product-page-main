@@ -1,0 +1,8 @@
+<div class="sidebar" [class.open]="isOpen" #sidebarRef>
+  <img src="/svgs/icon-close.svg" alt="close" (click)="onCloseSide()" />
+  <ul>
+    <li *ngFor="let item of menuItems; let i = index" (click)="onCloseSide()">
+      {{ item }}
+    </li>
+  </ul>
+</div>

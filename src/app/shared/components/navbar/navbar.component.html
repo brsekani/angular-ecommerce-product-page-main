@@ -1,0 +1,71 @@
+<nav>
+  <div class="logo-container">
+    <img
+      src="/svgs/icon-menu.svg"
+      alt="menu"
+      class="menu"
+      (click)="onOpenSidebar()"
+    />
+
+    <img src="/svgs/logo.svg" alt="logo" />
+
+    <ul>
+      <li
+        *ngFor="let item of menuItems; let i = index"
+        (click)="setActive(i)"
+        [class.active]="activeIndex === i"
+      >
+        <span class="menu-text">{{ item }}</span>
+        <div class="red-border"></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="cart-container" (click)="toggleDropdown()">
+    <div class="cart">
+      <span *ngIf="numberOfItems > 0">
+        {{ numberOfItems }}
+      </span>
+      <img src="/svgs/icon-cart.svg" alt="cart" />
+    </div>
+
+    <img class="avatar" src="/images/image-avatar.png" alt="avatar" />
+  </div>
+
+  <div class="cart-dropdown" *ngIf="isDropdownOpen">
+    <div class="cart-header">
+      <h1>Cart</h1>
+    </div>
+
+    <hr class="cart-divider" />
+
+    <p class="empty-message" *ngIf="numberOfItems === 0">Your cart is empty.</p>
+
+    <div *ngIf="numberOfItems > 0">
+      <div class="cart-item">
+        <img
+          src="/images/image-product-1-thumbnail.jpg"
+          alt="product-image"
+          class="item-thumbnail"
+        />
+
+        <div class="item-details">
+          <p class="item-title">Fall Limited Edition Sneakers</p>
+          <p class="item-price">
+            $125.00 x {{ numberOfItems }}
+            <span>${{ numberOfItems * 125 }}.00</span>
+          </p>
+        </div>
+
+        <img
+          src="/svgs/icon-delete.svg"
+          alt="delete-icon"
+          class="delete-icon"
+          (click)="ClearAddTocart()"
+        />
+      </div>
+
+      <button class="checkout-btn">Checkout</button>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,32 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  z-index: 1000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+img {
+  width: 14px;
+  height: 14px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  font-weight: 700;
+}/*# sourceMappingURL=sidebar.component.css.map */

@@ -1,0 +1,85 @@
+<section class="product">
+  <div class="product__gallery">
+    <img
+      [src]="images[activeImageIndex]"
+      alt="main-image"
+      class="product__main-image"
+      (click)="openModalFromHome()"
+    />
+
+    <div class="product__thumbnails">
+      <img
+        *ngFor="let thumb of imagesThumbnail; let i = index"
+        [src]="thumb"
+        alt="thumbnail"
+        class="product__thumbnail"
+        [class.active]="i === activeImageIndex"
+        (click)="setActiveImageIndex(i)"
+      />
+    </div>
+
+    <div class="carousel">
+      <button class="nav prev" (click)="prev()">
+        <img src="/svgs/icon-previous.svg" alt="previous-icon" />
+      </button>
+
+      <div
+        class="carousel__wrapper"
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event)"
+      >
+        <img [src]="images[activeImageIndex]" alt="carousel image" />
+      </div>
+
+      <button class="nav next" (click)="next()">
+        <img src="/svgs/icon-next.svg" alt="next-icon" />
+      </button>
+    </div>
+  </div>
+
+  <div class="product__details">
+    <h6 class="product__brand">Sneaker Company</h6>
+    <h1 class="product__title">Fall Limited Edition Sneakers</h1>
+    <p class="product__description">
+      The low-profile sneakers are your perfect casual wear companion. Featuring
+      a durable rubber outer sole, they'll withstand everything the weather can
+      offer.
+    </p>
+
+    <div class="product__pricing-info">
+      <div class="product__price-section">
+        <h2 class="product__price">$125.00</h2>
+        <p class="product__discount">50%</p>
+      </div>
+
+      <p class="product__original-price">$250.00</p>
+    </div>
+
+    <div class="product__actions">
+      <div class="product__quantity-control">
+        <img
+          src="/svgs/icon-minus.svg"
+          alt="minus"
+          class="product__icon"
+          (click)="decrease()"
+        />
+        <p class="product__quantity">{{ quantity }}</p>
+        <img
+          src="/svgs/icon-plus.svg"
+          alt="plus"
+          class="product__icon"
+          (click)="increase()"
+        />
+      </div>
+
+      <button
+        class="product__add-to-cart"
+        (click)="addToCart()"
+        [disabled]="quantity <= 0"
+      >
+        <img src="/svgs/icon-cart.svg" alt="cart" class="product__cart-icon" />
+        <p>Add to cart</p>
+      </button>
+    </div>
+  </div>
+</section>
